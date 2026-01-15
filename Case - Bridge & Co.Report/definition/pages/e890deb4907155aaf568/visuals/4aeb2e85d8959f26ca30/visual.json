@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "4aeb2e85d8959f26ca30",
+  "position": {
+    "x": 23.943881527669522,
+    "y": 458.63387002240114,
+    "z": 1000,
+    "height": 243.71998812257152,
+    "width": 603.58534684333586,
+    "tabOrder": 7005
+  },
+  "visualGroup": {
+    "displayName": "caracteristicas-demograficas-valor",
+    "groupMode": "ScaleMode"
+  }
+}

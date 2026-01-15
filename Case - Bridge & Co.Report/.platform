@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Case - Bridge & Co"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "3ccaac30-82a6-4b1b-8c3f-6b7e578ce306"
+  }
+}

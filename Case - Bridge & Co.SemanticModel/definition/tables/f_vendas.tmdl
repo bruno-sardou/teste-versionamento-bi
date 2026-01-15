@@ -1,0 +1,126 @@
+table f_vendas
+	lineageTag: d212d233-57cd-4791-afe4-ad1c60366041
+
+	column idvendedor
+		dataType: int64
+		lineageTag: 21e7a7e8-6c67-47f4-9cbf-f5eca1a479d5
+		summarizeBy: none
+		sourceColumn: idvendedor
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column produto
+		dataType: string
+		lineageTag: 509b8d74-786d-479f-be2c-5fbb8541180f
+		summarizeBy: none
+		sourceColumn: produto
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_venda
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: d1f052e9-f3f9-42eb-84fb-9ef52c6c0db2
+		summarizeBy: none
+		sourceColumn: data_venda
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column quantidade
+		dataType: int64
+		lineageTag: 45d199e0-aaab-49b2-a85d-90216f9720d5
+		summarizeBy: sum
+		sourceColumn: quantidade
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column valor_unitario
+		dataType: string
+		lineageTag: 6cdb7771-b0a3-49e6-8ba4-4322f8e7a76c
+		summarizeBy: none
+		sourceColumn: valor_unitario
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome_cliente
+		dataType: string
+		lineageTag: f958b4b2-ddf6-426b-a7ca-0ac9427fe723
+		summarizeBy: none
+		sourceColumn: nome_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column email_cliente
+		dataType: string
+		lineageTag: 29d07cb7-8ba5-4674-811e-5d1d8516e499
+		summarizeBy: none
+		sourceColumn: email_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column sexo_cliente
+		dataType: string
+		lineageTag: b7b2fd97-c671-457c-977b-db44c8e67057
+		summarizeBy: none
+		sourceColumn: sexo_cliente
+
+		annotation SummarizationSetBy = Automatic
+
+	column cidade
+		dataType: string
+		lineageTag: 79d8e74d-b443-486e-b118-4ebe9350262d
+		summarizeBy: none
+		sourceColumn: cidade
+
+		annotation SummarizationSetBy = Automatic
+
+	column estado
+		dataType: string
+		lineageTag: dcecb5f1-2b5a-44f3-a833-4563fba4f2b3
+		summarizeBy: none
+		sourceColumn: estado
+
+		annotation SummarizationSetBy = Automatic
+
+	column celular
+		dataType: string
+		lineageTag: b7f744c0-488c-4db6-8213-5c7e24d8fc5a
+		summarizeBy: none
+		sourceColumn: celular
+
+		annotation SummarizationSetBy = Automatic
+
+	column cpf
+		dataType: string
+		lineageTag: 332089ad-5ca5-41d8-b191-9c8fd8e6ff7a
+		summarizeBy: none
+		sourceColumn: cpf
+
+		annotation SummarizationSetBy = Automatic
+
+	column venda_validada
+		dataType: string
+		lineageTag: ac71b8e0-3117-4e15-8d90-e61df89571de
+		summarizeBy: none
+		sourceColumn: venda_validada
+
+		annotation SummarizationSetBy = Automatic
+
+	partition f_vendas = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=bridge_db", "SELECT #(lf)    V.*,#(lf)    CASE#(lf)        WHEN data_venda < data_admissao THEN ""Não""#(lf)        ELSE ""Sim""#(lf)    END AS venda_validada#(lf)FROM#(lf)    vendas V#(lf)LEFT JOIN#(lf)    rh R#(lf)    ON V.idvendedor = r.idvendedor #(lf)")
+				in
+				    Fonte
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+

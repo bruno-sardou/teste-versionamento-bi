@@ -1,0 +1,169 @@
+table Medidas
+	lineageTag: 19f69108-1d86-4748-b875-b2b92c4772c2
+
+	measure 'venda (valor)' = ```
+			
+			
+			VAR _total_vendido = 
+			    SUMX(
+			        f_vendas,
+			        f_vendas[valor_unitario] * f_vendas[quantidade]
+			    )
+			
+			RETURN _total_vendido
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: 1b5a7b32-31ad-4bc6-a533-5b19a2359e4e
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	measure 'venda (quantidade)' = ```
+			
+			
+			VAR _quantidade_vendas = 
+			    SUM(
+			        f_vendas[quantidade]
+			    )
+			
+			RETURN _quantidade_vendas
+			```
+		formatString: #,0
+		lineageTag: 6b1abd41-7da6-4b2f-95d6-ecf34f1d7ca9
+
+	measure ticket_medio = ```
+			
+			
+			VAR _ticket_medio = 
+			DIVIDE(
+			    [venda (valor)],
+			    [venda (quantidade)]
+			)
+			
+			RETURN _ticket_medio
+			```
+		lineageTag: 03777127-5d75-40a2-b4b3-7bb1bcbb2122
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure comissao = ```
+			
+			
+			VAR _comissao = 
+			    [venda (valor)] * 0.05
+			
+			RETURN _comissao
+			```
+		lineageTag: a4d63be0-9339-4fbd-a143-3ca1af10ebe9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'venda (quantidade) - media_mensal' = ```
+			
+			VAR _data_admissao = MIN(d_rh[data_admissao])
+			VAR _data_maxima = 
+			    CALCULATE(
+			        MAX(d_calendario[data]),
+			        ALLSELECTED(d_calendario)
+			    )
+			VAR _quantidade_meses =
+			    DATEDIFF(
+			        _data_admissao,
+			        _data_maxima,
+			        MONTH
+			    ) + 1
+			VAR _media_mensal = 
+			    DIVIDE(
+			        [venda (quantidade)],
+			        _quantidade_meses,
+			        0
+			    )
+			VAR _quantidade_vendedores = 
+			    CALCULATE(
+			        DISTINCTCOUNT(
+			            d_rh[vendedor]
+			        ),
+			        d_rh[idvendedor] <> 76
+			    )
+			
+			RETURN 
+			    DIVIDE(
+			        _media_mensal,
+			        _quantidade_vendedores
+			    )
+			
+			```
+		lineageTag: 85b0a9df-6d7d-49db-b224-5850ae60e593
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure quantidade_meses = ```
+			
+			VAR _data_admissao = MIN(d_rh[data_admissao])
+			VAR _data_maxima = 
+			    CALCULATE(
+			        MAX(d_calendario[data]),
+			        ALLSELECTED(d_calendario)
+			    )
+			VAR _quantidade_meses =
+			    DATEDIFF(
+			        _data_admissao,
+			        _data_maxima,
+			        MONTH
+			    ) + 1
+			
+			RETURN _quantidade_meses
+			```
+		formatString: 0
+		lineageTag: d7fd29b8-06e6-4687-b90b-6f2162833d9b
+
+	measure 'venda (valor) - media_mensal' = ```
+			
+			VAR _data_admissao = MIN(d_rh[data_admissao])
+			VAR _data_maxima = 
+			    CALCULATE(
+			        MAX(d_calendario[data]),
+			        ALLSELECTED(d_calendario)
+			    )
+			VAR _quantidade_meses =
+			    DATEDIFF(
+			        _data_admissao,
+			        _data_maxima,
+			        MONTH
+			    ) + 1
+			VAR _media_mensal = 
+			    DIVIDE(
+			        [venda (valor)],
+			        _quantidade_meses,
+			        0
+			    )
+			VAR _quantidade_vendedores = 
+			    CALCULATE(
+			        DISTINCTCOUNT(
+			            d_rh[vendedor]
+			        ),
+			        d_rh[idvendedor] <> 76
+			    )
+			
+			RETURN 
+			    DIVIDE(
+			        _media_mensal,
+			        _quantidade_vendedores
+			    )
+			```
+		formatString: "R$"\ #,0.00;-"R$"\ #,0.00;"R$"\ #,0.00
+		lineageTag: a634bc46-10ba-4784-b457-4b5515dc399b
+
+		annotation PBI_FormatHint = {"currencyCulture":"pt-BR"}
+
+	partition Medidas = m
+		mode: import
+		source =
+				let
+				    Fonte = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [#"Coluna 1" = _t]),
+				    #"Tipo Alterado" = Table.TransformColumnTypes(Fonte,{{"Coluna 1", type text}}),
+				    #"Colunas Removidas" = Table.RemoveColumns(#"Tipo Alterado",{"Coluna 1"})
+				in
+				    #"Colunas Removidas"
+
+	annotation PBI_ResultType = Table
+

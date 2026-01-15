@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "960efd9a0802dcfcbf1a",
+  "position": {
+    "x": 654,
+    "y": 198,
+    "z": 8000,
+    "height": 228.740157480315,
+    "width": 606.3937007874016,
+    "tabOrder": 3000
+  },
+  "visualGroup": {
+    "displayName": "top-por-vendedor",
+    "groupMode": "ScaleMode"
+  }
+}

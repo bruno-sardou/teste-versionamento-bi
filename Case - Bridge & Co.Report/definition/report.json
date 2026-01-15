@@ -1,0 +1,112 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/3.0.0/schema.json",
+  "themeCollection": {
+    "baseTheme": {
+      "name": "CY24SU10",
+      "reportVersionAtImport": {
+        "visual": "1.8.101",
+        "report": "2.0.101",
+        "page": "1.3.101"
+      },
+      "type": "SharedResources"
+    }
+  },
+  "objects": {
+    "section": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "outspacePane": [
+      {
+        "properties": {
+          "expanded": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "publicCustomVisuals": [
+    "PBI_CV_25997FEB_F466_44FA_B562_AC4063283C4C"
+  ],
+  "resourcePackages": [
+    {
+      "name": "SharedResources",
+      "type": "SharedResources",
+      "items": [
+        {
+          "name": "CY24SU10",
+          "path": "BaseThemes/CY24SU10.json",
+          "type": "BaseTheme"
+        }
+      ]
+    },
+    {
+      "name": "RegisteredResources",
+      "type": "RegisteredResources",
+      "items": [
+        {
+          "name": "icons8-filtro-969493399617397431.png",
+          "path": "icons8-filtro-969493399617397431.png",
+          "type": "Image"
+        },
+        {
+          "name": "icons8-filtro-96_(1)6675989873415425.png",
+          "path": "icons8-filtro-96_(1)6675989873415425.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_91033803977220611126.png",
+          "path": "Group_91033803977220611126.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_922740600663949485.png",
+          "path": "Group_922740600663949485.png",
+          "type": "Image"
+        },
+        {
+          "name": "Group_937884457778338867.png",
+          "path": "Group_937884457778338867.png",
+          "type": "Image"
+        },
+        {
+          "name": "BRIDGE_(21)13791793444546696.png",
+          "path": "BRIDGE_(21)13791793444546696.png",
+          "type": "Image"
+        },
+        {
+          "name": "BRIDGE_(22)47697865541245454.png",
+          "path": "BRIDGE_(22)47697865541245454.png",
+          "type": "Image"
+        },
+        {
+          "name": "Capa_-_15637601602801583.jpg",
+          "path": "Capa_-_15637601602801583.jpg",
+          "type": "Image"
+        }
+      ]
+    }
+  ],
+  "settings": {
+    "useStylableVisualContainerHeader": true,
+    "exportDataMode": "AllowSummarized",
+    "defaultDrillFilterOtherVisuals": true,
+    "allowChangeFilterTypes": true,
+    "useEnhancedTooltips": true,
+    "useDefaultAggregateDisplayName": true
+  }
+}

@@ -1,0 +1,7 @@
+role 'Filtro por Email'
+	modelPermission: read
+
+	tablePermission d_rh = [email] = USERPRINCIPALNAME()
+
+	annotation PBI_Id = 947be82ff5fe4c568e602893f8e005ba
+

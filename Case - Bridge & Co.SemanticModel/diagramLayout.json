@@ -1,0 +1,74 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 0,
+        "y": 0
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 175,
+            "y": 376
+          },
+          "nodeIndex": "f_vendas",
+          "nodeLineageTag": "d212d233-57cd-4791-afe4-ad1c60366041",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 0,
+            "y": 25
+          },
+          "nodeIndex": "d_calendario",
+          "nodeLineageTag": "d8f74d02-92b1-412d-87ab-f9bd7e1a4929",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 284,
+            "y": 25
+          },
+          "nodeIndex": "d_rh",
+          "nodeLineageTag": "22ca60bb-7120-4125-96ae-f741dfda3642",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 902,
+            "y": 123
+          },
+          "nodeIndex": "Medidas",
+          "nodeLineageTag": "19f69108-1d86-4748-b875-b2b92c4772c2",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 3
+        }
+      ],
+      "name": "Todas as tabelas",
+      "zoomValue": 100,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "Todas as tabelas",
+  "defaultDiagram": "Todas as tabelas"
+}

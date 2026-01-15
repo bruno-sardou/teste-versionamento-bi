@@ -1,0 +1,23 @@
+relationship 09402d4a-1b92-4428-bb2f-fe517f15168d
+	joinOnDateBehavior: datePartOnly
+	fromColumn: d_calendario.data
+	toColumn: LocalDateTable_a490f601-5445-4a2d-86e9-f4098c0e51dc.Date
+
+relationship f10fefe1-17f1-46eb-ad75-afde95d27cc6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: d_rh.data_nascimento
+	toColumn: LocalDateTable_52a16e51-a257-46ca-9abb-09376f31c6b4.Date
+
+relationship 388677bd-d38f-4ec2-98c4-2cba28430a91
+	joinOnDateBehavior: datePartOnly
+	fromColumn: d_rh.data_admissao
+	toColumn: LocalDateTable_2b0fd0e7-3203-42b3-9be3-b7c1d5c35c60.Date
+
+relationship AutoDetected_0691cac4-6204-469e-8b35-e25e91930a90
+	fromColumn: f_vendas.idvendedor
+	toColumn: d_rh.idvendedor
+
+relationship e18129fb-17ac-fd40-e9b8-16391d0aaa62
+	fromColumn: f_vendas.data_venda
+	toColumn: d_calendario.data
+

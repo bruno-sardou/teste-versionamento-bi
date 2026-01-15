@@ -1,0 +1,59 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/bookmarksMetadata/1.0.0/schema.json",
+  "items": [
+    {
+      "name": "97428357df3c6f549b0a",
+      "displayName": "visao-geral-1",
+      "children": [
+        "d8ace86cecee1041093d",
+        "34f8d73c745e25cdb3d4",
+        "584367190af93649a1ac",
+        "4a4de82cab954d845a06",
+        "adcd1ac88a13620e081d",
+        "7de2b91a85bdf28be01e",
+        "1d1ffb8b283f3d144472",
+        "d2f6218c58d05e2f5905",
+        "4bf3168ac97aa7202f10",
+        "56e7e4f5c47edebf9fba",
+        "50c1ba43cd9a536eeff9",
+        "a427025cef58b4ef0911"
+      ]
+    },
+    {
+      "name": "c0c7dd76ea8770f39775"
+    },
+    {
+      "name": "394250512b9123fa733d"
+    },
+    {
+      "name": "5f1a83a2615de7fb281e"
+    },
+    {
+      "name": "6a3d6e99f182e4e6c33c"
+    },
+    {
+      "name": "dc1db069dc62518d123e"
+    },
+    {
+      "name": "e04ee2691a7b5a3ff223"
+    },
+    {
+      "name": "634527649b35db3f1c8d"
+    },
+    {
+      "name": "0f28ad3b9d2fb625a89f"
+    },
+    {
+      "name": "e04b0913fee87f0edb1a"
+    },
+    {
+      "name": "0977ccb7f075a04fe29c"
+    },
+    {
+      "name": "9e5fa25169b8ba7de043"
+    },
+    {
+      "name": "2b6e1e95711c949d88a8"
+    }
+  ]
+}

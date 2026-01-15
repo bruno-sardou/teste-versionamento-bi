@@ -1,0 +1,28 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["f_vendas","d_calendario","d_rh","Medidas"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_890f3c88-ec2b-4a22-8b19-3e7f7eda11ab
+ref table f_vendas
+ref table d_calendario
+ref table LocalDateTable_a490f601-5445-4a2d-86e9-f4098c0e51dc
+ref table d_rh
+ref table LocalDateTable_52a16e51-a257-46ca-9abb-09376f31c6b4
+ref table LocalDateTable_2b0fd0e7-3203-42b3-9be3-b7c1d5c35c60
+ref table Medidas
+
+ref role 'Filtro por Email'
+ref role Administrador
+
+ref cultureInfo pt-BR
+

@@ -1,0 +1,157 @@
+table d_rh
+	lineageTag: 22ca60bb-7120-4125-96ae-f741dfda3642
+
+	column idvendedor
+		dataType: int64
+		formatString: 0
+		lineageTag: c861fc59-8776-4412-9ac5-e10179f19f10
+		summarizeBy: none
+		sourceColumn: idvendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column nome
+		dataType: string
+		lineageTag: b21b4ee1-d00b-420b-aa25-2d022eabb306
+		summarizeBy: none
+		sourceColumn: nome
+
+		annotation SummarizationSetBy = Automatic
+
+	column sobrenome
+		dataType: string
+		lineageTag: 321ba090-c705-4ef6-8f36-036a31ae5f69
+		summarizeBy: none
+		sourceColumn: sobrenome
+
+		annotation SummarizationSetBy = Automatic
+
+	column email
+		dataType: string
+		lineageTag: 59917253-7733-4431-acab-5cbcb6193b4b
+		summarizeBy: none
+		sourceColumn: email
+
+		annotation SummarizationSetBy = Automatic
+
+	column sexo
+		dataType: string
+		lineageTag: ef8f42fc-b769-4a02-ac7a-289034d6316e
+		summarizeBy: none
+		sourceColumn: sexo
+
+		annotation SummarizationSetBy = Automatic
+
+	column raca
+		dataType: string
+		lineageTag: f4021154-e7b0-44be-aacd-5168b7b9875b
+		summarizeBy: none
+		sourceColumn: raca
+
+		annotation SummarizationSetBy = Automatic
+
+	column escolaridade
+		dataType: string
+		lineageTag: c2bf219f-c45d-4da5-8831-785031a911bc
+		summarizeBy: none
+		sourceColumn: escolaridade
+
+		annotation SummarizationSetBy = Automatic
+
+	column pcd
+		dataType: string
+		lineageTag: 8ef469d7-5cab-4d5b-afea-672a00874565
+		summarizeBy: none
+		sourceColumn: pcd
+
+		annotation SummarizationSetBy = Automatic
+
+	column tipo_pcd
+		dataType: string
+		lineageTag: bf61f67c-64d0-4a53-9739-ea3f97a866de
+		summarizeBy: none
+		sourceColumn: tipo_pcd
+
+		annotation SummarizationSetBy = Automatic
+
+	column data_nascimento
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 43d3c5ed-b997-478e-b8d7-da9332412975
+		summarizeBy: none
+		sourceColumn: data_nascimento
+
+		variation Variation
+			isDefault
+			relationship: f10fefe1-17f1-46eb-ad75-afde95d27cc6
+			defaultHierarchy: LocalDateTable_52a16e51-a257-46ca-9abb-09376f31c6b4.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column data_admissao
+		dataType: dateTime
+		formatString: Short Date
+		lineageTag: 07bafee2-3d67-4f93-97f0-bf94b229bba2
+		summarizeBy: none
+		sourceColumn: data_admissao
+
+		variation Variation
+			isDefault
+			relationship: 388677bd-d38f-4ec2-98c4-2cba28430a91
+			defaultHierarchy: LocalDateTable_2b0fd0e7-3203-42b3-9be3-b7c1d5c35c60.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column tempo_de_casa
+		dataType: double
+		lineageTag: 440e2a7c-359a-44a6-8996-b2a9cc695389
+		summarizeBy: sum
+		sourceColumn: tempo_de_casa
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column idade
+		dataType: double
+		lineageTag: 7a343910-d937-4cb1-b4ed-d5e106ad79ec
+		summarizeBy: sum
+		sourceColumn: idade
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column vendedor
+		dataType: string
+		lineageTag: 67519e9a-9965-4b81-970a-6fd4d511cc24
+		summarizeBy: none
+		sourceColumn: vendedor
+
+		annotation SummarizationSetBy = Automatic
+
+	column faixa_idade
+		dataType: string
+		lineageTag: 091e279d-28e6-4746-ba75-49d3f04e5e5c
+		summarizeBy: none
+		sourceColumn: faixa_idade
+
+		annotation SummarizationSetBy = Automatic
+
+	partition d_rh = m
+		mode: import
+		source =
+				let
+				    Fonte = Odbc.Query("dsn=bridge_db", "SELECT#(lf)    *,#(lf)    ROUND(#(lf)        (JULIANDAY('now') - JULIANDAY(data_admissao)) / 365.25, 1#(lf)    ) AS tempo_de_casa,#(lf)#(lf)    ROUND(#(lf)        (JULIANDAY('now') - JULIANDAY(data_nascimento)) / 365.25, 0#(lf)    ) AS idade,#(lf)#(lf)    CASE#(lf)        WHEN ROUND((JULIANDAY('now') - JULIANDAY(data_nascimento)) / 365.25, 0) BETWEEN 18 AND 25 THEN 'Entre 18 e 25'#(lf)        WHEN ROUND((JULIANDAY('now') - JULIANDAY(data_nascimento)) / 365.25, 0) BETWEEN 26 AND 35 THEN 'Entre 26 e 35'#(lf)        WHEN ROUND((JULIANDAY('now') - JULIANDAY(data_nascimento)) / 365.25, 0) BETWEEN 36 AND 45 THEN 'Entre 36 e 45'#(lf)        ELSE 'Mais de 45'#(lf)    END AS faixa_idade#(lf)FROM#(lf)    rh#(lf)"),
+				    #"Personalização Adicionada" = Table.AddColumn(Fonte, "vendedor", each Text.Combine({[nome], " ", [sobrenome]}))
+				in
+				    #"Personalização Adicionada"
+
+	annotation PBI_NavigationStepName = Navegação
+
+	annotation PBI_ResultType = Table
+
